@@ -1,4 +1,4 @@
-package com.ua.glebkorobov.backend.controller;
+package com.ua.glebkorobov.backend.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.ua.glebkorobov.backend.entity;
+package com.ua.glebkorobov.backend.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
