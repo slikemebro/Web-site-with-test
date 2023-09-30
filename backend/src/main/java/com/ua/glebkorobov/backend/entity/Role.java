@@ -1,4 +1,6 @@
 package com.ua.glebkorobov.backend.entity;
 
-public class UserEntity {
+public enum Role {
+    USER,
+    ADMIN
 }
