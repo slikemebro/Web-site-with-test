@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 @Entity
-@Table(name = "test_task")
+@Table(name = "test_tasks")
 @Data
 @NoArgsConstructor
 public class TestTaskEntity {
