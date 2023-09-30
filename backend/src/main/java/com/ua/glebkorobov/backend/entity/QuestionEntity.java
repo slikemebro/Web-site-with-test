@@ -16,7 +16,7 @@ import java.util.HashSet;
 
 @Entity
 @Data
-@Table(name = "question")
+@Table(name = "questions")
 @NoArgsConstructor
 public class QuestionEntity {
 
