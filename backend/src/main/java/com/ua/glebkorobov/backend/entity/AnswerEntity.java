@@ -6,10 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name = "answers")
+@NoArgsConstructor
 public class AnswerEntity {
 
     @Id
@@ -18,4 +20,10 @@ public class AnswerEntity {
 
     private String answer;
 
+    private boolean correct;
+
+    public AnswerEntity(String answer, boolean correct) {
+        this.answer = answer;
+        this.correct = correct;
+    }
 }
