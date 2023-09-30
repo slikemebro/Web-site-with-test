@@ -29,11 +29,6 @@ public class QuestionEntity {
 
     private int points;
 
-    //    @ManyToMany(fetch = FetchType.EAGER,
-//            cascade = CascadeType.ALL)
-//    @JoinTable(name = "question_answers",
-//            joinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"))
     @OneToMany
     @JoinColumn(name = "question_id")
     Collection<AnswerEntity> answers = new HashSet<>();
