@@ -1,6 +1,6 @@
-package com.ua.glebkorobov.backend.configs;
+package com.ua.glebkorobov.backend.config;
 
-import com.ua.glebkorobov.backend.repositories.UserRepository;
+import com.ua.glebkorobov.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

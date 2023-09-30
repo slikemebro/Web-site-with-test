@@ -1,4 +1,4 @@
-package com.ua.glebkorobov.backend.entities;
+package com.ua.glebkorobov.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

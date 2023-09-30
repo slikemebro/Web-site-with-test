@@ -1,9 +1,9 @@
 package com.ua.glebkorobov.backend.authentication;
 
-import com.ua.glebkorobov.backend.configs.JwtService;
-import com.ua.glebkorobov.backend.entities.Role;
-import com.ua.glebkorobov.backend.entities.User;
-import com.ua.glebkorobov.backend.repositories.UserRepository;
+import com.ua.glebkorobov.backend.config.JwtService;
+import com.ua.glebkorobov.backend.entity.Role;
+import com.ua.glebkorobov.backend.entity.User;
+import com.ua.glebkorobov.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

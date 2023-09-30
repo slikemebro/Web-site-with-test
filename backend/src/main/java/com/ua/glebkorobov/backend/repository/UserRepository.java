@@ -1,6 +1,6 @@
-package com.ua.glebkorobov.backend.repositories;
+package com.ua.glebkorobov.backend.repository;
 
-import com.ua.glebkorobov.backend.entities.User;
+import com.ua.glebkorobov.backend.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

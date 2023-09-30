@@ -1,4 +1,4 @@
-package com.ua.glebkorobov.backend.configs;
+package com.ua.glebkorobov.backend.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
