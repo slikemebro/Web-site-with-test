@@ -6,6 +6,7 @@ import com.ua.glebkorobov.backend.service.AnswerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,20 +26,22 @@ public class AnswerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AnswerEntity> getAnswerById(@PathVariable long id){
-        return new ResponseEntity<>(answerService.findById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(answerService.findById(id), HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<Collection<AnswerEntity>> getAllAnswers(){
-        return new ResponseEntity<>(answerService.findAll(), HttpStatus.FOUND);
+        return new ResponseEntity<>(answerService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<AnswerEntity> saveAnswer(@RequestBody AnswerDto answerDto){
         return new ResponseEntity<>(answerService.save(answerDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<AnswerEntity> deleteAnswer(@PathVariable long id){
         return new ResponseEntity<>(answerService.deleteAnswer(id), HttpStatus.NO_CONTENT);
     }

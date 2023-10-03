@@ -6,6 +6,7 @@ import com.ua.glebkorobov.backend.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,22 +37,26 @@ public class QuestionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<QuestionEntity> saveQuestion(@RequestBody QuestionDto questionDto) {
         return new ResponseEntity<>(questionService.save(questionDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<QuestionEntity> addAnswer(@PathVariable("id") long id,
                                                     @RequestParam long answerId) {
         return new ResponseEntity<>(questionService.addAnswer(id, answerId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<QuestionEntity> deleteQuestion(@PathVariable("id") long id) {
         return new ResponseEntity<>(questionService.deleteQuestion(id), HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}/{answer-id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<QuestionEntity> deleteAnswerFromQuestion(@PathVariable("id") long id,
                                                                    @PathVariable("answer-id") long answerId) {
         return new ResponseEntity<>(questionService.deleteAnswerFromQuestion(id, answerId), HttpStatus.OK);
