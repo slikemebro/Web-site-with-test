@@ -52,7 +52,7 @@ public class QuestionController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<QuestionEntity> deleteQuestion(@PathVariable("id") long id) {
-        return new ResponseEntity<>(questionService.deleteQuestion(id), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(questionService.deleteQuestion(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}/{answer-id}")

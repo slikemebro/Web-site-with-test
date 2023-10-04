@@ -43,6 +43,6 @@ public class AnswerController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<AnswerEntity> deleteAnswer(@PathVariable long id){
-        return new ResponseEntity<>(answerService.deleteAnswer(id), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(answerService.deleteAnswer(id), HttpStatus.OK);
     }
 }
