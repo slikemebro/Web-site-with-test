@@ -35,13 +35,13 @@ public class AnswerController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<AnswerEntity> saveAnswer(@RequestBody AnswerDto answerDto){
         return new ResponseEntity<>(answerService.save(answerDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<AnswerEntity> deleteAnswer(@PathVariable long id){
         return new ResponseEntity<>(answerService.deleteAnswer(id), HttpStatus.NO_CONTENT);
     }

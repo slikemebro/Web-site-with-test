@@ -38,25 +38,25 @@ public class TestTaskController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<TestTaskEntity> saveTestTask(@RequestBody TestTaskDto testTaskDto) {
         return new ResponseEntity<>(testTaskService.save(testTaskDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<TestTaskEntity> addQuestion(@PathVariable("id") long id, @RequestParam long questionId) {
         return new ResponseEntity<>(testTaskService.addQuestion(id, questionId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<TestTaskEntity> deleteTestTask(@PathVariable("id") long id){
         return new ResponseEntity<>(testTaskService.deleteTestTask(id), HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}/{question-id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<TestTaskEntity> deleteQuestionFromTestTask(@PathVariable("id") long id,
                                                                      @PathVariable("question-id") long questionId){
         return new ResponseEntity<>(testTaskService.deleteQuestionFromTestTask(id, questionId), HttpStatus.OK);

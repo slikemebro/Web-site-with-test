@@ -37,26 +37,26 @@ public class QuestionController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<QuestionEntity> saveQuestion(@RequestBody QuestionDto questionDto) {
         return new ResponseEntity<>(questionService.save(questionDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<QuestionEntity> addAnswer(@PathVariable("id") long id,
                                                     @RequestParam long answerId) {
         return new ResponseEntity<>(questionService.addAnswer(id, answerId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<QuestionEntity> deleteQuestion(@PathVariable("id") long id) {
         return new ResponseEntity<>(questionService.deleteQuestion(id), HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}/{answer-id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<QuestionEntity> deleteAnswerFromQuestion(@PathVariable("id") long id,
                                                                    @PathVariable("answer-id") long answerId) {
         return new ResponseEntity<>(questionService.deleteAnswerFromQuestion(id, answerId), HttpStatus.OK);
