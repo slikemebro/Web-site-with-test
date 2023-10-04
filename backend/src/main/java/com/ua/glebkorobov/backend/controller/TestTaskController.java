@@ -52,7 +52,7 @@ public class TestTaskController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<TestTaskEntity> deleteTestTask(@PathVariable("id") long id){
-        return new ResponseEntity<>(testTaskService.deleteTestTask(id), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(testTaskService.deleteTestTask(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}/{question-id}")
