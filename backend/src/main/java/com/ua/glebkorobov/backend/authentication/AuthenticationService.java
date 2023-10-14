@@ -3,7 +3,10 @@ package com.ua.glebkorobov.backend.authentication;
 import com.ua.glebkorobov.backend.config.JwtService;
 import com.ua.glebkorobov.backend.entity.Role;
 import com.ua.glebkorobov.backend.entity.User;
+import com.ua.glebkorobov.backend.entity.UserProfile;
+import com.ua.glebkorobov.backend.repository.UserProfileRepository;
 import com.ua.glebkorobov.backend.repository.UserRepository;
+import com.ua.glebkorobov.backend.util.IdGenerationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository repository;
+    private final UserProfileRepository userProfileRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -26,6 +30,19 @@ public class AuthenticationService {
                 .role(Role.ADMIN)
                 .build();
         repository.save(user);
+
+        // Создание и сохранение UserProfile с установкой связи с пользователем
+        var userProfile = new UserProfile();
+        userProfile.setId(user.getId());
+        // Генерация уникального 7-значного accountId и проверка на уникальность
+        long accountId;
+        do {
+            accountId = IdGenerationUtils.generateAccountId();
+        } while (userProfileRepository.existsByAccountId(accountId));
+
+        userProfile.setAccountId(accountId);
+        userProfileRepository.save(userProfile);
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
